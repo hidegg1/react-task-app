@@ -1,0 +1,19 @@
+{
+  "name": "react-task-app",
+  // 既存の compose.yml をそのまま使い、app サービスのコンテナに VS Code を接続する
+  "dockerComposeFile": [
+    "../compose.yml"
+  ],
+  "service": "app",
+  "workspaceFolder": "/app",
+  // VS Code を閉じたらコンテナも停止する
+  "shutdownAction": "stopCompose",
+  "customizations": {
+    "vscode": {
+      // コンテナ内の VS Code に自動で入る拡張機能
+      "extensions": [
+        "oxc.oxc-vscode"
+      ]
+    }
+  }
+}
