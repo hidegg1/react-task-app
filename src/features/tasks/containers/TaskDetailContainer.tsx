@@ -4,6 +4,7 @@ import { getTaskById } from "../hooks/getTaskById";
 import type { Task } from "../../../types/task";
 import TaskDetail from "../components/TaskDetail";
 import styles from "../styles/taskDetail.module.css";
+import TaskDeleteButton from "../components/TaskDeleteButton";
 
 export default function TaskDetailContainer() {
     // URLからタスクIDを取得
@@ -47,6 +48,9 @@ export default function TaskDetailContainer() {
             {/* 右のtaskは、stateでセットしてる取得したタスク情報 */}
             {/* 左のtaskはprops の名前（type Props で決めた名前） */}
             <TaskDetail task={task} />{/* 取得したタスク情報をTaskDetailコンポーネントに渡す */}
+            <div>
+                <TaskDeleteButton id={id} /> {/* 削除ボタンコンポーネントを追加 */}
+            </div>
         </div>
     );
 }

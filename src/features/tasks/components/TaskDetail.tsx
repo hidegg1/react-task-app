@@ -42,7 +42,7 @@ export default function TaskDetail({ task }: Props) {
             </p>
             <div className={styles.links}>
                 <Link to={`/tasks/${task.id}/edit`} className={styles.editLink}>
-                    編集する {/* ※ このページは後ほど作成します */}
+                    編集する
                 </Link>
                 <Link to="/tasks" className={styles.backLink}>
                     タスク一覧に戻る
