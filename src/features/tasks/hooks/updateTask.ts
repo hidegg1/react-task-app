@@ -1,7 +1,7 @@
 import type { Task, TaskFormData } from "../../../types/task";
 import { mockTasks } from "../mocks/task";
 
-export const updateTask = (id: string, taskData: TaskFormData): Promise<Task | null> => {
+export const updateTask = (id: string, taskData: Partial<TaskFormData>): Promise<Task | null> => {
     return new Promise((resolve) => {
         setTimeout(() => {
             // パラメータのIDと一致しない場合、-1を返す関数

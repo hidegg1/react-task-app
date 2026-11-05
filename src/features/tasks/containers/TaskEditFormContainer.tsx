@@ -21,6 +21,7 @@ export default function TaskEditContainer() {
                     description: task.description,
                     priority: task.priority,
                     dueDate: task.dueDate,
+                    status: task.status
                 });
             }
         }

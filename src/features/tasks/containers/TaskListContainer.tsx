@@ -4,19 +4,28 @@ import type { Task } from "../../../types/task";
 import TaskCard from "../components/TaskCard";
 import styles from "../styles/TaskListContainer.module.css";
 import { Link } from "react-router-dom";
+import { updateTask } from "../hooks/updateTask"; // updateTask関数をインポート
 
 export default function TaskListContainer() {
     const [tasks, setTasks] = useState<Task[]>([]);
 
-    useEffect(() => {  // こちらは普通の関数（Promise を返さない）
-        const fetchTasks = async () => {  // await を使うための async 関数を「定義」
-            const fetchedTasks = await getTasks();
-            // useStateでも型定義をしてるので型セーフを実行
-            setTasks(fetchedTasks);
-        };
-        // 定義した関数を「実行」
+    // タスク一覧を取得する関数
+    const fetchTasks = async () => { // await を使うための async 関数を「定義」
+        const fetchedTasks = await getTasks();
+        // useStateでも型定義をしてるので型セーフを実行
+        setTasks(fetchedTasks);
+    };
+
+    useEffect(() => { // こちらは普通の関数（Promise を返さない）
         fetchTasks();
     }, []);
+
+    // セレクトボックスで変更されたステータスを更新する処理
+    const handleToggleStatus = async (taskId: Task['id'], newStatus: boolean) => {
+        await updateTask(String(taskId), { status: newStatus });
+        fetchTasks();
+    };
+
 
     return (
         <div className={styles.container}>
@@ -37,7 +46,11 @@ export default function TaskListContainer() {
                     {tasks.map((task) => (
                         // keyはReact がリストの各要素を見分けるための特別な属性
                         // 左のtaskはprops の名前（type Props で決めた名前）
-                        <TaskCard key={task.id} task={task} />
+                        <TaskCard
+                            key={task.id}
+                            task={task}
+                            onToggleStatus={handleToggleStatus}
+                        />
                     ))}
                 </div>
             </div>

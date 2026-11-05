@@ -2,7 +2,7 @@
 export type Priority = "high" | "medium" | "low";
 
 // TaskFormData型はTask型からid、status、createdAt、updatedAtを除外したものです
-export type TaskFormData = Omit<Task, "id" | "status" | "createdAt" | "updatedAt">;
+export type TaskFormData = Omit<Task, "id" | "createdAt" | "updatedAt">;
 
 // タスクオブジェクト全体の型を定義します。
 export interface Task {
