@@ -12,6 +12,7 @@ export default function TaskFormContainer() {
         description: "",
         priority: "medium", // 初期値として medium を設定
         dueDate: "",
+        status: false
     });
 
     // ナビゲーションを使用して前の画面に戻る
