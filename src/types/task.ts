@@ -1,7 +1,7 @@
 // タスクの優先度は「high」「medium」「low」の3種類です。
 export type Priority = "high" | "medium" | "low";
 
-// TaskFormData型はTask型からid、status、createdAt、updatedAtを除外したものです
+// TaskFormData型はTask型からid、createdAt、updatedAtを除外したものです
 export type TaskFormData = Omit<Task, "id" | "createdAt" | "updatedAt">;
 
 // タスクオブジェクト全体の型を定義します。
